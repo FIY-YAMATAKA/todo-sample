@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ToDoリスト</title>
+		<link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<section>
+			<div class="container">
+				<h1>吾輩のやること一覧</h1>
+				<form id="add-task-form" class="input-area">
+						<input type="text" id="task-input" placeholder="タスクを入力" required />
+						<button id="add-btn" aria-label="追加" type="submit"><i class="material-icons">add_task</i></button>
+				</form>
+				<div id="filters">
+					<div>
+						<label class="checked"><input type="radio" name="fil-status" value="0" checked>全て</label>
+						<label><input type="radio" name="fil-status" value="1">完了のみ</label>
+						<label><input type="radio" name="fil-status" value="2">未完了のみ</label>
+					</div>
+					<div>
+						<select id="sort" name="sort">
+							<option value="asc">古い順</option>
+							<option value="desc">新しい順</option>
+						</select>
+					</div>
+				</div>
+				<ul id="task-list"></ul>
+				<p id="task-count"></p>
+			</div>
+		</section>
+		<footer>
+			<a href="#" id="sample-data-btn">
+				サンプルデータを反映
+			</a>
+		</footer>
+		<script src="script.js"></script>
+	</body>
+</html>
