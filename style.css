@@ -10,8 +10,9 @@ body {
 	font-style: normal;
 	background: #e0e4e8;
 	margin: 0;
-	padding: 2rem;
+	padding: 0.5rem;
 }
+
 button {
 	cursor: pointer;
 	padding: 0;
@@ -34,18 +35,6 @@ button i.material-icons {
 	box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.2);
 }
 
-@media screen and (min-width: 768px) {
-	.container {
-		max-width: 90%;
-	}
-}
-
-@media screen and (min-width: 1280px) {
-	.container {
-		max-width: 80%;
-	}
-}
-
 h1 {
 	text-align: center;
 	color: #333;
@@ -64,7 +53,7 @@ h1 {
 	padding: 0.5rem;
 	font-size: 1rem;
 }
-#add-btn{
+#add-btn {
 	border-radius: 0.2rem;
 	border: 1px solid #767676;
 	background-color: #767676;
@@ -74,10 +63,10 @@ h1 {
 	padding: 0 0.45rem;
 	color: #fff;
 }
-#add-btn:hover{
+#add-btn:hover {
 	background-color: #ddd;
 }
-#add-btn:hover .material-icons{
+#add-btn:hover .material-icons {
 	color: #767676;
 }
 
@@ -85,10 +74,13 @@ h1 {
 	display: flex;
 	gap: 0.5rem;
 	align-items: center;
-	padding: 0.5rem;
+	padding: 0.5rem 0;
 }
 #filters div:first-child {
+	display: flex;
 	flex: 1;
+	gap: 0.5rem;
+	flex-wrap: wrap;
 }
 #filters div:last-child {
 	flex: 0 0 auto;
@@ -124,7 +116,6 @@ li {
 	margin-bottom: 10px;
 	display: flex;
 	align-items: center;
-	gap: 0.4rem;
 	border-radius: 5px;
 	cursor: pointer;
 	transition: all 0.4s ease;
@@ -136,42 +127,49 @@ li:hover {
 li.completed {
 	background: #e0e0e0;
 }
-li > span,
-li > form {
+.task-body {
+	min-width: 0;
+	display: flex;
 	flex: 1;
+	align-items: center;
+	gap: 0.4rem;
+	flex-direction: column;
+	max-width: 100%;
+	padding-right: 0.5rem;
 }
-li > span.text {
-	padding: 3px 4px;
+.task-body > * {
+	margin-right: auto;
+}
+.task-body span.text,
+.task-body form {
+	flex: 1;
+	max-width: 100%;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	border: 1px solid transparent;
 }
-li > form {
+.task-body span.text {
+	padding: 0.2rem 0;
+}
+.task-body form {
+	margin-right: 0.5rem;
 	display: none;
-}
-li > form > input {
-	flex: 1;
 	width: 100%;
-}
-
-li > time {
-	flex: 0 0 auto;
-	font-size: 0.8rem;
-}
-li.completed > span,
-li.completed > time {
-	color: #999;
-	text-decoration: line-through;
-}
-
-li button {
-	flex: 0 0 auto;
-	border-radius: 0.2rem;
 	border: 1px solid #767676;
+	border-radius: 0.2rem;
+}
+.task-body form > input {
+	flex: 1;
+	padding-block: 0;
+	padding-inline: 0;
+	padding: 0.2rem 0.25rem;
+	border: none;
 }
 .update-btn {
+	border: none;
+	flex: 0 0 auto;
 	background-color: #767676;
-	margin-left: -0.2rem;
 }
 .update-btn:hover {
 	background-color: #ddd;
@@ -183,6 +181,29 @@ li button {
 .update-btn:hover .material-icons {
 	color: #767676;
 }
+
+.task-body time {
+	max-width: 100%;
+	flex: 0 0 auto;
+	font-size: 0.8rem;
+	padding: 0 0 0.2rem 0;
+}
+.completed .task-body span,
+.completed .task-body time {
+	color: #999;
+	text-decoration: line-through;
+}
+
+.task-actions {
+	display: flex;
+	flex: 0 0 auto;
+	gap: 0.4rem;
+}
+.task-actions button {
+	border-radius: 0.2rem;
+	border: 1px solid #767676;
+}
+
 .edit-btn {
 	background: #56a;
 	border-color: #56a;
@@ -206,6 +227,7 @@ li button {
 .delete-btn:hover .material-icons {
 	color: #f34;
 }
+
 #task-count {
 	font-size: 0.8rem;
 	color: #666;
@@ -222,4 +244,29 @@ footer {
 }
 footer a {
 	font-size: 0.8rem;
+}
+
+/* メディアクエリ　タブレット〜PC */
+
+@media screen and (min-width: 768px) {
+	body {
+		padding: 1rem;
+	}
+	.container {
+		max-width: 90%;
+	}
+	.task-body {
+		flex-direction: row;
+	}
+	.task-body > time {
+		padding: 0 .5rem 0 0;
+	}
+}
+@media screen and (min-width: 1280px) {
+	body {
+		padding: 2rem;
+	}
+	.container {
+		max-width: 80%;
+	}
 }

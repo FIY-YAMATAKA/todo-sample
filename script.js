@@ -169,7 +169,18 @@ function renderTasks () {
 			removeTask( task.id );
 		} );
 
-		li.append( spanText, editForm, time, editBtn, editBtn, deleteBtn );
+		// 左カラム（テキスト類）
+		const taskBody = document.createElement('div');
+		taskBody.classList.add('task-body');
+		taskBody.append(spanText, editForm, time);
+
+		// 右カラム（ボタン類）
+		const taskActions = document.createElement('div');
+		taskActions.classList.add('task-actions');
+		taskActions.append(editBtn, editBtn, deleteBtn);
+
+		// liにカラムを追加
+		li.append( taskBody,  taskActions);
 		taskList.appendChild( li );
 	} );
 	updateTaskCount();
